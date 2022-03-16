@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using StockManager.Messages;
+using StockManager.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace StockManager.Services.Classes
 {
-    public class NavigationService
+    public class NavigationService : INavigationService
     {
         private readonly IMessenger _messenger;
 

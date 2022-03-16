@@ -8,6 +8,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using GalaSoft.MvvmLight;
+using StockManager.Services.Interfaces;
+using StockManager.Services.Classes;
+using GalaSoft.MvvmLight.Messaging;
+using StockManager.View;
+using StockManager.Services;
 
 namespace StockManager
 {
@@ -31,7 +36,12 @@ namespace StockManager
         {
             Container = new Container();
 
+            Container.RegisterSingleton<INavigationService, NavigationService>();
+            Container.RegisterSingleton<IMessenger, Messenger>();
+            Container.RegisterSingleton<IStockManager, JsonStockManager>();
+
             Container.RegisterSingleton<MainViewModel>();
+            Container.RegisterSingleton<UserViewModel>();
             Container.RegisterSingleton<AdminViewModel>();
 
             Container.Verify();
@@ -39,8 +49,8 @@ namespace StockManager
 
         public void StartMain<Ty>() where Ty : ViewModelBase
         {
-            Window window = new Window();
-            var viewModel = Container.GetInstance<Ty>();
+            Window window = new MainView();
+            var viewModel = Container?.GetInstance<Ty>();
 
             window.DataContext = viewModel;
             

@@ -3,9 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:StockManager.View" xmlns:viewmodel="clr-namespace:StockManager.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:AdminViewModel}"
+             xmlns:local="clr-namespace:StockManager.View" 
+             xmlns:viewmodel="clr-namespace:StockManager.ViewModel" 
+             d:DataContext="{d:DesignInstance Type=viewmodel:AdminViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="450">
+
+    <UserControl.Resources>
+        <Style x:Key="TitleText" TargetType="Label">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -19,11 +31,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Row="0" Style="{StaticResource TitleText}"
+        <Label Grid.Row="0" 
+               Style="{StaticResource TitleText}"
                Content="Name: " />
-        <Label Grid.Row="1" Style="{StaticResource TitleText}"
+        <Label Grid.Row="1" 
+               Style="{StaticResource TitleText}"
                Content="Description: " />
-        <Label Grid.Row="2" Style="{StaticResource TitleText}"
+        <Label Grid.Row="2" 
+               Style="{StaticResource TitleText}"
                Content="Price: " />
 
         <TextBox Grid.Row="0" 
@@ -31,7 +46,17 @@
                  Text="{Binding NamePrompt}"/>
         <TextBox Grid.Row="1" 
                  Grid.Column="1"
-                 Text="{Binding Prompt}"/>
+                 Text="{Binding DescriptionPrompt}"/>        
+        <TextBox Grid.Row="2" 
+                 Grid.Column="1"
+                 Text="{Binding PricePrompt}"/>
+
+        <Button Grid.Row="4" 
+                Grid.ColumnSpan="2"
+                Command="{Binding AddCommand}"
+                FontSize="35"
+                FontWeight="Bold"
+                Content="Add"/>
 
     </Grid>
 </UserControl>

@@ -9,12 +9,7 @@ namespace StockManager.Services
 {
     public class JsonStockManager : IStockManager
     {
-        public string? Filepath { get; init; }
-
-        public JsonStockManager(string filepath)
-        {
-            Filepath = filepath;
-        }
+        public string? Filepath { get; init; } = "Stock.json";
 
         public void Add(Product product)
         {

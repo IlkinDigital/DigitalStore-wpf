@@ -9,17 +9,11 @@
         <DataTemplate DataType="{x:Type ViewModel:MainViewModel}">
             <View:MainView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type ViewModel:UserViewModel}">
+            <View:UserView/>
+        </DataTemplate>
         <DataTemplate DataType="{x:Type ViewModel:AdminViewModel}">
             <View:AdminView/>
         </DataTemplate>
-        
-        <ResourceDictionary x:Key="MainStyles">
-            <Style x:Key="TitleText" TargetType="Label">
-                <Setter Property="FontSize" Value="20" />
-                <Setter Property="FontWeight" Value="SemiBold" />
-                <Setter Property="HorizontalAlignment" Value="Center" />
-                <Setter Property="VerticalAlignment" Value="Center" />
-            </Style>
-        </ResourceDictionary>
     </Application.Resources>
 </Application>

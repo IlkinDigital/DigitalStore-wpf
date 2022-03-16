@@ -3,9 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:StockManager.View"
+        xmlns:local="clr-namespace:StockManager.View" 
+        xmlns:viewmodel="clr-namespace:StockManager.ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainViewModel}"
         mc:Ignorable="d"
         Title="MainView" Height="450" Width="450">
+
+    <Window.Resources>
+        <Style x:Key="TitleText" TargetType="Label">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -20,15 +32,17 @@
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0"
+                    Command="{Binding AdminNavCommand}"
                     Content="Admin"/>
 
             <Label Grid.Column="1" 
-                   Style="{StaticResource ResourceKey=}"
+                   Style="{StaticResource TitleText}"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
                    Content="Ilkin Electronics"/>
 
             <Button Grid.Column="2" 
+                    Command="{Binding UserNavCommand}"
                     Content="User"/>
         </Grid>
 
