@@ -1,4 +1,5 @@
-﻿using StockManager.ViewModel;
+﻿using StockManager.Services;
+using StockManager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace StockManager.View
 {
     /// <summary>
-    /// Interaction logic for StockView.xaml
+    /// Interaction logic for AdminView.xaml
     /// </summary>
-    public partial class StockView : Window
+    public partial class AdminView : UserControl
     {
-        public StockView()
+        public AdminView()
         {
             InitializeComponent();
-            DataContext = new StockViewModel();
         }
     }
 }

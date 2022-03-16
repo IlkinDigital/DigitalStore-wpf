@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StockManager.ViewModel
+namespace StockManager.Services.Interfaces
 {
-    public class StockViewModel : ViewModelBase
+    public interface INavigationService
     {
-        
+        public void NavigateTo<Ty>() where Ty : ViewModelBase;
     }
 }

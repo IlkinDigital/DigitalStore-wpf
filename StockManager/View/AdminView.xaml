@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="StockManager.View.AdminView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:StockManager.View" xmlns:viewmodel="clr-namespace:StockManager.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:AdminViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Style="{StaticResource TitleText}"
+               Content="Name: " />
+        <Label Grid.Row="1" Style="{StaticResource TitleText}"
+               Content="Description: " />
+        <Label Grid.Row="2" Style="{StaticResource TitleText}"
+               Content="Price: " />
+
+        <TextBox Grid.Row="0" 
+                 Grid.Column="1"
+                 Text="{Binding NamePrompt}"/>
+        <TextBox Grid.Row="1" 
+                 Grid.Column="1"
+                 Text="{Binding Prompt}"/>
+
+    </Grid>
+</UserControl>

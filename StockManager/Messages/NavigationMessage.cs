@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StockManager.Services
+namespace StockManager.Messages
 {
-    public class StockService
+    public class NavigationMessage
     {
-
+        public Type ViewModelType { get; set; }
     }
 }

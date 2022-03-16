@@ -1,0 +1,38 @@
+﻿<Window x:Class="StockManager.View.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StockManager.View"
+        mc:Ignorable="d"
+        Title="MainView" Height="450" Width="450">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Content="Admin"/>
+
+            <Label Grid.Column="1" 
+                   Style="{StaticResource ResourceKey=}"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Content="Ilkin Electronics"/>
+
+            <Button Grid.Column="2" 
+                    Content="User"/>
+        </Grid>
+
+        <ContentControl Grid.Row="1" 
+                        Content="{Binding CurrentViewModel}"/>
+    </Grid>
+</Window>
