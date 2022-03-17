@@ -22,6 +22,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="7*"/>
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
         <Grid>
@@ -46,7 +47,35 @@
                     Content="User"/>
         </Grid>
 
-        <ContentControl Grid.Row="1" 
+        <ListBox Grid.Row="1"  ItemsSource="{Binding ProductList}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <Label Grid.Row="0"
+                               Content="{Binding Name}"/>
+                        <Label Grid.Row="1"
+                               Content="{Binding Description}"/>
+                        <Label Grid.Column="1"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Grid.RowSpan="2"
+                               Content="{Binding Price}"/>
+
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ContentControl Grid.Row="2" 
                         Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

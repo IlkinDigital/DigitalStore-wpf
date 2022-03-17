@@ -16,36 +16,57 @@ namespace StockManager.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private ViewModelBase _currentViewModel;
-        private RelayCommand _adminNavCommand;
-        private RelayCommand _userNavCommand;
-
-        public INavigationService NavigationService { get; set; }
         public ViewModelBase CurrentViewModel 
         {
             get => _currentViewModel;
             set => Set(ref _currentViewModel, value);
         } 
 
-        public MainViewModel(IMessenger messenger, INavigationService navigationService)
-        {
-            NavigationService = navigationService;
+        public INavigationService NavigationService { get; set; }
 
-            messenger.Register<NavigationMessage>(this, message =>
+        private RelayCommand _adminNavCommand;
+        public RelayCommand AdminNavCommand { get => _adminNavCommand ??= new RelayCommand(() =>
+        {
+            NavigationService.NavigateTo<AdminViewModel>();
+        }); }        
+
+        private RelayCommand _userNavCommand;
+        public RelayCommand UserNavCommand { get => _userNavCommand ??= new RelayCommand(() =>
+        {
+            NavigationService.NavigateTo<UserViewModel>();
+        }); }
+
+        private readonly IStockManager StockManager;
+        private readonly IMessenger Messenger;
+
+        private List<Product> _producList = new();
+        public List<Product> ProductList { get => _producList; set => _producList = value; }
+
+
+        public MainViewModel(IMessenger messenger, INavigationService navigationService, IStockManager stockManager)
+        {
+            Messenger = messenger;
+            NavigationService = navigationService;
+            StockManager = stockManager;
+
+            UpdateProductList();
+
+            // Stock update message registration
+            Messenger.Register<UpdateStockMessage>(this, message => UpdateProductList());
+
+            // Navigation message registration
+            Messenger.Register<NavigationMessage>(this, message =>
             {
                 var viewModel = App.Container.GetInstance(message.ViewModelType) as ViewModelBase;
                 CurrentViewModel = viewModel;
             });
         }
         
-        public RelayCommand AdminNavCommand { get => _adminNavCommand ??= new RelayCommand(() =>
+        private void UpdateProductList()
         {
-            NavigationService.NavigateTo<AdminViewModel>();
-        }); }        
-        public RelayCommand UserNavCommand { get => _userNavCommand ??= new RelayCommand(() =>
-        {
-            NavigationService.NavigateTo<UserViewModel>();
-        }); }
-
-        
+            var products = StockManager.Get();
+            if (products != null)
+                ProductList = new(products);
+        }
     }
 }

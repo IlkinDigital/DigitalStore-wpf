@@ -1,5 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
+using StockManager.Messages;
 using StockManager.Services;
 using System;
 using System.Collections.Generic;
@@ -13,6 +15,7 @@ namespace StockManager.ViewModel
     public class AdminViewModel : ViewModelBase
     {
         private IStockManager ProductsManager;
+        private IMessenger Messenger;
 
         private RelayCommand _addCommand;
         public RelayCommand AddCommand
@@ -56,6 +59,8 @@ namespace StockManager.ViewModel
                         Description = DescriptionPrompt,
                         Price = price
                     });
+
+                    Messenger?.Send<UpdateStockMessage>(new());
                 }
             });
         }
@@ -64,9 +69,10 @@ namespace StockManager.ViewModel
         public string? DescriptionPrompt { get; set; }
         public string? PricePrompt { get; set; }
 
-        public AdminViewModel(IStockManager stockManager)
+        public AdminViewModel(IMessenger messenger, IStockManager stockManager)
         {
             ProductsManager = stockManager;
+            Messenger = messenger;
         }
 
     }

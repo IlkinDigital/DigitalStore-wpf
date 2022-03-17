@@ -7,10 +7,17 @@
              xmlns:viewmodel="clr-namespace:StockManager.ViewModel" 
              d:DataContext="{d:DesignInstance Type=viewmodel:UserViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="450">
+             d:DesignHeight="100" d:DesignWidth="450">
     <Grid>
-        <ListBox ItemsSource="{Binding ProductList}">
-            
-        </ListBox>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Column="0"
+               FontSize="20"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Content="{Binding TotalCost, StringFormat='Test: {0} AZN'}"/>
     </Grid>
 </UserControl>

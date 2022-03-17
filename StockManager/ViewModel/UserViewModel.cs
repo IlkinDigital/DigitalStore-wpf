@@ -1,4 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
+using StockManager.Messages;
 using StockManager.Model;
 using StockManager.Services;
 using System;
@@ -11,20 +13,15 @@ namespace StockManager.ViewModel
 {
     public class UserViewModel : ViewModelBase
     {
-        private IStockManager StockManager;
+        private IMessenger Messenger;
 
-        private List<Product> _producList = new();
-        public List<Product> ProductList { get => _producList; set => _producList = value; }    
+        public float TotalCost { get; set; } = 0.0f;
 
-        public UserViewModel(IStockManager stockManager)
+        public UserViewModel(IMessenger messenger)
         {
-            StockManager = stockManager;
-            UpdateProductList();
+            Messenger = messenger;
         }
 
-        private void UpdateProductList()
-        {
-            ProductList = new(StockManager.Get());
-        }
+
     }
 }

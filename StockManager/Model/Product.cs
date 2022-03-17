@@ -12,4 +12,9 @@ namespace StockManager.Model
         public string? Description { get; set; }
         public float Price { get; set; }
     }
+
+    public class Products
+    {
+        public Product[]? Stock { get; set; }
+    }
 }

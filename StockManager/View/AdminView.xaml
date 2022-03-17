@@ -11,7 +11,7 @@
 
     <UserControl.Resources>
         <Style x:Key="TitleText" TargetType="Label">
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontSize" Value="12" />
             <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="HorizontalAlignment" Value="Center" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -54,7 +54,7 @@
         <Button Grid.Row="4" 
                 Grid.ColumnSpan="2"
                 Command="{Binding AddCommand}"
-                FontSize="35"
+                FontSize="15"
                 FontWeight="Bold"
                 Content="Add"/>
 
