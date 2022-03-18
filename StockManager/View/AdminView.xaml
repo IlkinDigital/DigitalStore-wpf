@@ -51,12 +51,22 @@
                  Grid.Column="1"
                  Text="{Binding PricePrompt}"/>
 
-        <Button Grid.Row="4" 
-                Grid.ColumnSpan="2"
-                Command="{Binding AddCommand}"
-                FontSize="15"
-                FontWeight="Bold"
-                Content="Add"/>
+        <Grid Grid.Row="4" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0"
+                    Command="{Binding AddCommand}"
+                    FontSize="15"
+                    FontWeight="Bold"
+                    Content="Add"/>
+            <Button Grid.Column="1"
+                    Command="{Binding RemoveCommand}"
+                    FontSize="15"
+                    FontWeight="Bold"
+                    Content="Remove"/>            
+        </Grid>
 
     </Grid>
 </UserControl>

@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 namespace StockManager.ViewModel
 {
@@ -39,9 +40,10 @@ namespace StockManager.ViewModel
         private readonly IStockManager StockManager;
         private readonly IMessenger Messenger;
 
-        private List<Product> _producList = new();
-        public List<Product> ProductList { get => _producList; set => _producList = value; }
+        private ObservableCollection<Product> _productList = new();
+        public ObservableCollection<Product> ProductList { get => _productList; set => Set(ref _productList, value); }
 
+        public static int SelectedIndex { get; set; }
 
         public MainViewModel(IMessenger messenger, INavigationService navigationService, IStockManager stockManager)
         {
@@ -60,6 +62,9 @@ namespace StockManager.ViewModel
                 var viewModel = App.Container.GetInstance(message.ViewModelType) as ViewModelBase;
                 CurrentViewModel = viewModel;
             });
+
+            // UserViewModel on startup
+            NavigationService.NavigateTo<UserViewModel>();
         }
         
         private void UpdateProductList()

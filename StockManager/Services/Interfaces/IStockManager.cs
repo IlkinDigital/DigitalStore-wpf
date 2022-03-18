@@ -11,7 +11,8 @@ namespace StockManager.Services
     {
         public string? Filepath { get; init; }
 
-        public void Add(Product product);
         public Product[]? Get();
+        public void Add(Product product);
+        public void Remove(int index);
     }
 }

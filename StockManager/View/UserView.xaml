@@ -8,16 +8,46 @@
              d:DataContext="{d:DesignInstance Type=viewmodel:UserViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="450">
+
+    <UserControl.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Grid.Column="0"
-               FontSize="20"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Center"
-               Content="{Binding TotalCost, StringFormat='Test: {0} AZN'}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Column="0"
+                   FontSize="20"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center">
+            <Run Text="Total Cost: "/>
+            <Run Text="{Binding TotalCost}"/>
+            <Run Text=" AZN"/>
+        </TextBlock>
+        <Button Grid.Row="1"
+                Command="{Binding BuyCommand}"
+                Style="{StaticResource ButtonStyle}"
+                Content="Buy"/>
+
+        <Button Grid.Column="1"
+                Command="{Binding AddCommand}"
+                Style="{StaticResource ButtonStyle}"
+                Content="Add"/>
+
+        <Button Grid.Column="1" Grid.Row="1"
+                Command="{Binding RemoveCommand}"
+                Style="{StaticResource ButtonStyle}"
+                Content="Remove"/>
     </Grid>
 </UserControl>
